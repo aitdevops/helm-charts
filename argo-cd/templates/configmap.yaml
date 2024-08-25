@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "argo-cd.fullname" . }}-configmap
+  labels:
+    app.kubernetes.io/name: {{ include "argo-cd.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+data:
+  # Example config data
+  configManagementPlugins: |
+    - name: custom-plugin
+      generate:
+        command: ["/usr/local/bin/custom-plugin", "generate"]

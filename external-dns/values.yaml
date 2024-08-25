@@ -1,0 +1,13 @@
+provider: google
+google:
+  project: devops-projects-426703
+rbac:
+  create: true
+serviceAccount:
+  create: true
+  name: external-dns
+domainFilters:
+  - "aitdevops.com"
+txtOwnerId: "gke-aitdevops-external-dns"
+policy: sync
+logLevel: info

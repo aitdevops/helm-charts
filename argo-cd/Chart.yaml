@@ -1,0 +1,15 @@
+apiVersion: v2
+name: argo-cd
+description: A Helm chart for installing ArgoCD in Kubernetes
+
+type: application
+
+version: 1.0.0
+appVersion: 2.0.5
+
+maintainers:
+  - name: Rajeev Koppisetti
+    email: rajeevkoppisetti21@example.com
+
+sources:
+  - https://github.com/argoproj/argo-helm

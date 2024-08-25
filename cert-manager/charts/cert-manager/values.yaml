@@ -1,0 +1,17 @@
+global:
+  podSecurityPolicy:
+    enabled: true  # Enable pod security policies.
+
+installCRDs: true  # Install CRDs as part of the chart installation.
+
+clusterIssuer:
+  enabled: true  # Enable creation of a ClusterIssuer.
+  name: letsencrypt-prod  # Name of the ClusterIssuer.
+  email: rajeevkoppisetti21@example.com  # Email to register with Let's Encrypt.
+  server: https://acme-v02.api.letsencrypt.org/directory  # ACME server URL for Let's Encrypt.
+  privateKeySecretRef:
+    name: letsencrypt-prod  # Name of the secret to store the private key.
+  solvers:
+  - http01:
+      ingress:
+        class: nginx  # Use NGINX Ingress for solving HTTP-01 challenges.

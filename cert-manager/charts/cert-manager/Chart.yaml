@@ -1,0 +1,15 @@
+apiVersion: v2  # Helm chart API version.
+name: cert-manager  # The name of the chart.
+description: A Helm chart for cert-manager on GKE  # Short description of the chart.
+
+type: application  # The type of chart, indicating it's an application.
+
+version: 1.0.0  # Version of the Helm chart.
+appVersion: v1.5.3  # Version of the application the chart installs.
+
+maintainers:  # Maintainers of the chart.
+  - name: Rajeev Koppisetti  # Name of the maintainer.
+    email: rajeevkoppisetti21@gmail.com  # Email of the maintainer.
+
+sources:  # Links to the source code or documentation.
+  - https://github.com/jetstack/cert-manager

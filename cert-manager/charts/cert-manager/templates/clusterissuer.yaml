@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1  # API version for ClusterIssuer.
+kind: ClusterIssuer  # The type of resource.
+metadata:
+  name: {{ .Values.clusterIssuer.name }}  # Name of the ClusterIssuer.
+spec:
+  acme:
+    server: {{ .Values.clusterIssuer.server }}  # ACME server URL for Let's Encrypt.
+    email: {{ .Values.clusterIssuer.email }}  # Email to register with Let's Encrypt.
+    privateKeySecretRef:
+      name: {{ .Values.clusterIssuer.privateKeySecretRef.name }}  # Name of the secret to store the private key.
+    solvers:
+    - http01:
+        ingress:
+          class: {{ .Values.clusterIssuer.solvers[0].http01.ingress.class }}  # Use NGINX Ingress for solving HTTP-01 challenges.

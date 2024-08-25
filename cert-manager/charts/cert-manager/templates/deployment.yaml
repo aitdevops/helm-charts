@@ -1,0 +1,31 @@
+apiVersion: apps/v1  # API version for Deployment.
+kind: Deployment  # The type of resource.
+metadata:
+  name: {{ include "cert-manager.fullname" . }}  # Name of the deployment.
+  labels:
+    app.kubernetes.io/name: {{ include "cert-manager.name" . }}  # Labels for the deployment.
+    app.kubernetes.io/instance: {{ .Release.Name }}  # Helm release name.
+spec:
+  replicas: 1  # Number of replicas for cert-manager.
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "cert-manager.name" . }}  # Selector labels.
+      app.kubernetes.io/instance: {{ .Release.Name }}  # Helm release name.
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "cert-manager.name" . }}  # Labels for the pods.
+        app.kubernetes.io/instance: {{ .Release.Name }}  # Helm release name.
+    spec:
+     It seems that my response was cut off. Let me continue where it left off and provide the complete files with descriptions.
+
+#### 3. `cert-manager/templates/deployment.yaml` (continued)
+```yaml
+    spec:
+      containers:
+        - name: cert-manager  # Container name.
+          image: "quay.io/jetstack/cert-manager-controller:v1.5.3"  # Image for cert-manager controller.
+          args:
+            - --v=2  # Verbose logging level.
+            - --cluster-resource-namespace=$(POD_NAMESPACE)  # Namespace to watch for ClusterIssuers.
+            - --leader-election-namespace=kube-system  # Namespace for leader election.

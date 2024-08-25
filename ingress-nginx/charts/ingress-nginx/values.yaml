@@ -1,0 +1,14 @@
+controller:
+  replicaCount: 2  # Number of NGINX Ingress controller replicas.
+  service:
+    type: LoadBalancer  # Type of service (exposing via LoadBalancer).
+    loadBalancerIP: 35.222.225.228  # Static IP for the LoadBalancer service.
+  config:
+    use-forwarded-headers: "true"  # Configuration to use forwarded headers.
+  admissionWebhooks:
+    enabled: true  # Enable admission webhooks for validating Ingress resources.
+  metrics:
+    enabled: true  # Enable metrics for monitoring.
+
+defaultBackend:
+  enabled: true  # Deploy a default backend to handle unmatched requests.
